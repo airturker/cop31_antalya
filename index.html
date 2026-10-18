@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>COP31 Antalya | İklim Zirvesi Bilgi Yarışması</title>
+<style>
+:root{--navy:#082f49;--blue:#087e8b;--mint:#b8f2d8;--green:#18845b;--cream:#f6fbf8;--ink:#153047;--muted:#637b87;--coral:#ef6b5b;--gold:#f5c95d}
+*{box-sizing:border-box} body{margin:0;background:linear-gradient(140deg,#e8f8f2,#edf7fc 55%,#fff8e7);font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;color:var(--ink);min-height:100vh}
+button{font:inherit;cursor:pointer} .shell{max-width:1050px;margin:auto;padding:24px}
+.topbar{display:flex;align-items:center;justify-content:space-between;gap:14px;margin-bottom:18px}.brand{display:flex;align-items:center;gap:10px;font-weight:900;letter-spacing:.02em;color:var(--navy)}.brandmark{width:42px;height:42px;border-radius:14px;background:var(--navy);display:grid;place-items:center;color:#fff;font-size:20px;box-shadow:0 8px 20px #082f4925}.official{font-size:.82rem;color:var(--muted);text-decoration:none;border:1px solid #c9ded9;border-radius:999px;padding:9px 13px;background:#ffffffaa}
+.hero{position:relative;overflow:hidden;background:linear-gradient(115deg,#073b50 0%,#087e8b 55%,#32a777 100%);border-radius:28px;padding:34px 36px;color:#fff;min-height:260px;display:grid;grid-template-columns:1.1fr .9fr;gap:12px;align-items:center;box-shadow:0 22px 55px #0a526025}
+.eyebrow{font-size:.78rem;letter-spacing:.18em;text-transform:uppercase;font-weight:800;color:#b8f2d8}.hero h1{font-size:clamp(2.3rem,5vw,4rem);line-height:.98;letter-spacing:-.05em;margin:12px 0}.hero p{max-width:510px;color:#e2f7f2;line-height:1.55;margin:12px 0 22px}.hero-art{width:100%;max-width:400px;justify-self:end;filter:drop-shadow(0 18px 22px #003b4930)}.pill{display:inline-flex;align-items:center;gap:8px;background:#ffffff1a;border:1px solid #ffffff4a;padding:8px 12px;border-radius:999px;font-size:.86rem;font-weight:700}
+.primary,.secondary{border:0;border-radius:14px;padding:13px 18px;font-weight:800;transition:transform .15s,filter .15s}.primary{background:var(--gold);color:#173d42;box-shadow:0 8px 18px #001e2c22}.primary:hover,.secondary:hover{transform:translateY(-1px);filter:brightness(1.03)}.secondary{background:#e9f6f1;color:var(--navy);border:1px solid #c8e6da}
+.info-row{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:16px 0 22px}.info-card{background:#ffffffc9;border:1px solid #d8e9e4;border-radius:18px;padding:16px;display:flex;gap:12px;align-items:center}.info-icon{width:42px;height:42px;flex:none;border-radius:13px;background:#e0f5ec;display:grid;place-items:center;font-size:21px}.info-card b{display:block;color:var(--navy);font-size:1.05rem}.info-card span{font-size:.83rem;color:var(--muted)}
+.panel{background:#fff;border:1px solid #dcebe6;border-radius:24px;padding:clamp(20px,4vw,34px);box-shadow:0 15px 40px #0c4d3a0b}.hidden{display:none!important}.quiz-head{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:18px}.small-label{font-size:.8rem;text-transform:uppercase;letter-spacing:.12em;color:var(--green);font-weight:900}.score{background:#eff8f4;border-radius:999px;padding:8px 12px;font-size:.88rem;font-weight:800;color:var(--navy)}.progress{height:8px;background:#e7f0ed;border-radius:99px;overflow:hidden;margin-bottom:25px}.progress>div{height:100%;width:0;background:linear-gradient(90deg,#18a678,#8bcf86);transition:width .3s}
+.qnum{color:var(--muted);font-weight:800;font-size:.9rem}.question{font-size:clamp(1.35rem,3vw,2rem);line-height:1.28;letter-spacing:-.025em;color:var(--navy);margin:10px 0 22px;max-width:850px}.answers{display:grid;grid-template-columns:1fr 1fr;gap:12px}.answer{display:flex;align-items:flex-start;gap:12px;text-align:left;background:#f8fbfa;border:1.5px solid #dce9e5;border-radius:16px;padding:15px;color:var(--ink);min-height:70px;line-height:1.4}.answer:hover:not(:disabled){border-color:#55b89a;background:#f0fbf5}.letter{width:30px;height:30px;display:grid;place-items:center;flex:none;border-radius:10px;background:#e4f0ec;color:#1a6658;font-weight:900}.answer.correct{border-color:#1b9a69;background:#e9fbf1}.answer.correct .letter{background:#16845b;color:white}.answer.wrong{border-color:#e16b5f;background:#fff0ed}.answer.wrong .letter{background:#d9564b;color:#fff}.answer:disabled{cursor:default}
+.feedback{margin-top:18px;padding:15px 17px;border-radius:15px;line-height:1.5}.feedback.good{background:#e9fbf1;border:1px solid #b9e8d0}.feedback.bad{background:#fff2ef;border:1px solid #f0c7c1}.feedback strong{display:block;margin-bottom:4px}.controls{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:22px}.hint{font-size:.85rem;color:var(--muted)}
+.result{text-align:center;padding:12px 0}.result-badge{width:92px;height:92px;border-radius:28px;background:#e0f5ec;margin:0 auto 18px;display:grid;place-items:center;font-size:42px}.result h2{font-size:clamp(2rem,5vw,3rem);color:var(--navy);margin:0 0 8px}.result p{color:var(--muted);line-height:1.6}.stats{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin:22px 0}.stat{min-width:110px;padding:14px 20px;background:#f1f8f5;border-radius:16px}.stat b{display:block;font-size:1.7rem;color:var(--green)}.stat span{font-size:.8rem;color:var(--muted)}.review{margin:24px auto 0;text-align:left;max-width:760px}.review details{border-bottom:1px solid #e0ebe7;padding:12px 0}.review summary{cursor:pointer;font-weight:800;color:var(--navy)}.review p{margin:8px 0 0;font-size:.92rem}
+footer{display:flex;justify-content:space-between;gap:12px;align-items:center;color:#68817f;font-size:.8rem;padding:22px 4px 4px}footer a{color:#287e70}
+@media(max-width:700px){.shell{padding:14px}.hero{grid-template-columns:1fr;padding:25px}.hero-art{max-height:165px;justify-self:center;order:-1}.hero h1{font-size:2.7rem}.info-row{grid-template-columns:1fr}.answers{grid-template-columns:1fr}.topbar{align-items:flex-start}.official{max-width:155px;text-align:center}.controls{align-items:stretch;flex-direction:column}.controls button{width:100%}footer{flex-direction:column;align-items:flex-start}}
+@media print{body{background:#fff}.shell{max-width:none}.hero,.panel{box-shadow:none}.official,.primary,.secondary{display:none!important}}
+</style>
+</head>
+<body>
+<div class="shell">
+  <header class="topbar">
+    <div class="brand"><div class="brandmark">🌍</div><div>COP31 <span style="font-weight:500;color:#5b7c83">| Bilgi Yarışması</span></div></div>
+    <a class="official" href="https://cop31.tr/tr" target="_blank" rel="noopener">COP31 resmî sitesi ↗</a>
+  </header>
+
+  <section id="welcome" class="hero">
+    <div>
+      <div class="eyebrow">Antalya · 2026 · İklim için birlikte</div>
+      <h1>Gezegen için<br>bilgini göster.</h1>
+      <p>COP31, iklim değişikliği ve küresel iklim politikaları hakkında 10 soruluk etkileşimli bilgi yarışması.</p>
+      <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap">
+        <button class="primary" id="startBtn">Yarışmaya başla&nbsp; →</button>
+        <span class="pill">⏱ Süre sınırı yok</span>
+      </div>
+    </div>
+    <svg class="hero-art" viewBox="0 0 420 290" role="img" aria-label="Antalya kıyısı, dünya ve yapraklarla iklim temalı çizim">
+      <defs><linearGradient id="sea" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#72e0d1"/><stop offset="1" stop-color="#1b9b9b"/></linearGradient><linearGradient id="earth" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#b6f4cf"/><stop offset="1" stop-color="#39b98c"/></linearGradient></defs>
+      <circle cx="240" cy="130" r="108" fill="#ffffff" opacity=".12"/>
+      <circle cx="240" cy="130" r="88" fill="url(#earth)" stroke="#d8fff0" stroke-width="3"/>
+      <path d="M184 87l21-18 21 8 9 20-14 12-6 22-18-4-13-17zM249 55l30 8 16 19-8 19-19 5-4 20-18-4-9-22 8-19zM269 141l22 8 8 21-17 28-15-7-8-26zM188 148l20-8 20 13-5 24-19 17-18-21z" fill="#087e70" opacity=".85"/>
+      <path d="M152 205c42-17 90-19 143-4 33 9 61 8 93-1v55H152z" fill="url(#sea)"/>
+      <path d="M142 215c42-24 72-35 108-27 24 5 42 17 68 13 22-3 43-14 70-10v53H142z" fill="#e9d5a5"/>
+      <path d="M142 218c48-25 77-29 109-22 29 7 43 19 68 14 23-4 46-16 69-12" fill="none" stroke="#fff" stroke-width="4" stroke-linecap="round"/>
+      <path d="M73 227c13-33 25-48 45-57-3 25-16 44-45 57z" fill="#b8f2d8"/><path d="M74 228c-5-29-1-50 13-70 11 24 8 47-13 70z" fill="#68d3a1"/><path d="M73 229l7-57" stroke="#eafff4" stroke-width="3" stroke-linecap="round"/>
+      <circle cx="83" cy="72" r="25" fill="#f5c95d"/><path d="M83 33v-10M83 111v-10M44 72H34M122 72h-10M56 45l-7-7M110 99l-7-7M110 45l7-7M56 99l-7 7" stroke="#f5c95d" stroke-width="4" stroke-linecap="round"/>
+      <path d="M311 44c25-19 51-16 66 1-21 18-44 20-66-1z" fill="#b8f2d8"/><path d="M311 44l51 1" stroke="#fff" stroke-width="2" opacity=".8"/>
+      <path d="M333 77c15-12 31-10 40 1-12 12-26 13-40-1z" fill="#68d3a1"/><path d="M333 77l36 1" stroke="#fff" stroke-width="2" opacity=".8"/>
+      <text x="240" y="265" text-anchor="middle" font-size="13" font-weight="800" fill="#eafff7" letter-spacing="2">ANTALYA · COP31</text>
+    </svg>
+  </section>
+
+  <section class="info-row" aria-label="Yarışma bilgileri">
+    <div class="info-card"><div class="info-icon">🌱</div><div><b>10 soru</b><span>İklim ve COP bilgisi</span></div></div>
+    <div class="info-card"><div class="info-icon">🎯</div><div><b>4 seçenek</b><span>Her soruda tek doğru cevap</span></div></div>
+    <div class="info-card"><div class="info-icon">🏆</div><div><b>100 puan</b><span>Her doğru cevap 10 puan</span></div></div>
+  </section>
+
+  <main id="quiz" class="panel hidden" aria-live="polite">
+    <div class="quiz-head"><div class="small-label">COP31 bilgi testi</div><div class="score">Puan: <span id="scoreNow">0</span> / 100</div></div>
+    <div class="progress"><div id="progressFill"></div></div>
+    <div class="qnum" id="qnum">SORU 1 / 10</div>
+    <h2 class="question" id="question"></h2>
+    <div class="answers" id="answers"></div>
+    <div id="feedback" class="feedback hidden"></div>
+    <div class="controls"><span class="hint" id="hint">Bir seçeneğe dokunarak cevapla.</span><button class="primary hidden" id="nextBtn">Sonraki soru →</button></div>
+  </main>
+
+  <section id="result" class="panel hidden">
+    <div class="result">
+      <div class="result-badge" id="resultIcon">🌍</div>
+      <div class="small-label">YARIŞMA TAMAMLANDI</div>
+      <h2 id="resultTitle">Harika iş!</h2>
+      <p id="resultText"></p>
+      <div class="stats">
+        <div class="stat"><b id="finalScore">0</b><span>Toplam puan</span></div>
+        <div class="stat"><b id="correctCount">0/10</b><span>Doğru cevap</span></div>
+        <div class="stat"><b id="percent">0%</b><span>Başarı</span></div>
+      </div>
+      <button class="primary" id="restartBtn">↻ Yeniden yarış</button>
+      <button class="secondary" id="reviewBtn" style="margin-left:8px">Cevap anahtarını incele</button>
+    </div>
+    <div class="review hidden" id="review"></div>
+  </section>
+  <footer><span>Öğren, düşün, gezegen için harekete geç. 🌿</span><span>Resmî bilgi ve güncellemeler: <a href="https://cop31.tr/tr" target="_blank" rel="noopener">cop31.tr</a></span></footer>
+</div>
+<script>
+const questions = [
+{q:"2026 yılında gerçekleştirilecek olan Birleşmiş Milletler İklim Değişikliği Çerçeve Sözleşmesi 31. Taraflar Konferansı (COP31), Türkiye'nin hangi ilinde düzenlenecektir?",a:["İstanbul","İzmir","Ankara","Antalya"],correct:3,ex:"COP31 Zirvesi Türkiye'nin ev sahipliğinde Antalya'da gerçekleştirilecektir."},
+{q:"Antalya'daki COP31 Zirvesi'nden hemen bir yıl önce, 2025 yılında COP30 iklim zirvesine ev sahipliği yapan ülke ve şehir hangisidir?",a:["Brezilya - Belém","Birleşik Arap Emirlikleri - Dubai","Azerbaycan - Bakü","Mısır - Şarm El-Şeyh"],correct:0,ex:"COP30 zirvesi Brezilya'nın Belém şehrinde yapılmıştır."},
+{q:"Türkiye'nin ulusal düzeyde ilan ettiği resmi “Net Sıfır Emisyon” hedef yılı hangisidir?",a:["2030","2040","2053","2070"],correct:2,ex:"Türkiye, 2053 yılına kadar net sıfır emisyona ulaşma hedefini açıklamıştır."},
+{q:"Paris Anlaşması kapsamında ülkelerin güncelleyerek sunması beklenen yeni nesil Ulusal Katkı Beyanları (NDC 3.0) hangi dönemi kapsamaktadır?",a:["2020–2025","2035 yılına kadarki dönem","2050 yılına kadarki dönem","2100 yılına kadarki dönem"],correct:1,ex:"Belgede NDC 3.0 döngüsünün 2035 hedeflerini kapsadığı belirtilmektedir."},
+{q:"COP31'in ev sahibi bölgesi olan Akdeniz Havzası, IPCC raporlarına göre küresel ortalamaya kıyasla iklim değişikliğinden nasıl etkilenmektedir?",a:["Küresel ortalamaya göre daha hızlı ısınan bir “iklim değişikliği sıcak noktası” konumundadır","Küresel ortalamadan daha az etkilenmektedir","İklim değişikliğinden neredeyse hiç etkilenmeyen güvenli bir kuşaktır","Sadece deniz seviyesi düşüşüyle karşı karşıyadır"],correct:0,ex:"Akdeniz Havzası, küresel ortalamanın üzerinde ısınan hassas bölgelerden biridir."},
+{q:"Taraflar Konferansı (COP) toplantılarının dayandığı ana uluslararası çerçeve sözleşme aşağıdakilerden hangisidir?",a:["Kyoto Protokolü","Montreal Protokolü","Ramsar Sözleşmesi","BM İklim Değişikliği Çerçeve Sözleşmesi (UNFCCC)"],correct:3,ex:"COP zirveleri, BM İklim Değişikliği Çerçeve Sözleşmesi (UNFCCC) taraflarının yıllık buluşmalarıdır."},
+{q:"Paris Anlaşması'nın uluslararası karbon piyasalarını ve ülkeler arası emisyon ticareti mekanizmalarını düzenleyen maddesi hangisidir?",a:["Madde 2","Madde 12","Madde 6","Madde 21"],correct:2,ex:"Paris Anlaşması'nın 6. maddesi uluslararası karbon piyasalarını ve iş birliği mekanizmalarını düzenler."},
+{q:"İklim değişikliğinin yıkıcı etkilerine karşı en kırılgan gelişmekte olan ülkelerin zararlarını telafi etmeyi amaçlayan “Kayıp ve Hasar Fonu” hangi COP zirvesinde resmen kurulmuştur?",a:["COP27 - Şarm El-Şeyh","COP26 - Glasgow","COP28 - Dubai","COP29 - Bakü"],correct:0,ex:"Belgede Kayıp ve Hasar Fonu'nun 2022'deki COP27'de kabul edildiği belirtilmektedir."},
+{q:"Paris Anlaşması'nda yer alan ve küresel ortalama sıcaklık artışının sanayi öncesi döneme kıyasla kaç derecenin altında tutulması hedeflenmektedir?",a:["3°C–4°C arası","1,5°C ile 2°C arası (tercihen 1,5°C ile sınırlı kalması)","4°C–5°C arası","0,5°C"],correct:1,ex:"Paris Anlaşması, sıcaklık artışını 2°C'nin epeyce altında tutmayı ve mümkünse 1,5°C ile sınırlamayı hedefler."},
+{q:"Türkiye'nin COP31 sürecine giden yolda ulusal karbon piyasasını ve iklim politikalarını yasal güvenceye kavuşturmak için üzerinde çalıştığı temel yasal düzenleme hangisidir?",a:["Ulusal Enerji Tasarrufu Kanunu","Akdeniz Koruma Kanunu","Orman Yangınları Acil Eylem Kanunu","İklim Kanunu Taslağı"],correct:3,ex:"Belgede, Türkiye'nin Emisyon Ticaret Sistemi (ETS) ve iklim hedeflerini yasalaştıracak metin olarak İklim Kanunu Taslağı belirtilmektedir."}
+];
+let index=0, score=0, picked=[];
+const $=id=>document.getElementById(id);
+function start(){index=0;score=0;picked=[];$("welcome").classList.add("hidden");$("quiz").classList.remove("hidden");$("result").classList.add("hidden");renderQuestion();window.scrollTo({top:0,behavior:"smooth"});}
+function renderQuestion(){
+ const item=questions[index];$("qnum").textContent=`SORU ${index+1} / ${questions.length}`;$("question").textContent=item.q;$("answers").innerHTML="";$("feedback").className="feedback hidden";$("feedback").textContent="";$("hint").textContent="Bir seçeneğe dokunarak cevapla.";$("nextBtn").classList.add("hidden");$("nextBtn").textContent=index===questions.length-1?"Sonuçları gör →":"Sonraki soru →";$("scoreNow").textContent=score;$("progressFill").style.width=(index/questions.length*100)+"%";
+ item.a.forEach((answer,i)=>{const b=document.createElement("button");b.className="answer";b.innerHTML=`<span class="letter">${String.fromCharCode(65+i)}</span><span>${answer}</span>`;b.addEventListener("click",()=>choose(i));$("answers").appendChild(b);});
+}
+function choose(i){
+ if(picked[index]!==undefined)return;const item=questions[index];picked[index]=i;const buttons=[...$("answers").children];buttons.forEach((b,j)=>{b.disabled=true;if(j===item.correct)b.classList.add("correct");if(j===i&&i!==item.correct)b.classList.add("wrong");});
+ const ok=i===item.correct;if(ok)score+=10;$("scoreNow").textContent=score;$("feedback").className="feedback "+(ok?"good":"bad");$("feedback").innerHTML=`<strong>${ok?"✓ Doğru cevap! +10 puan":"✕ Bu kez olmadı."}</strong>${item.ex}`;$("hint").textContent="Hazırsan devam edebilirsin.";$("nextBtn").classList.remove("hidden");$("progressFill").style.width=((index+1)/questions.length*100)+"%";
+}
+function next(){if(picked[index]===undefined)return;if(index<questions.length-1){index++;renderQuestion();}else finish();}
+function finish(){
+ $("quiz").classList.add("hidden");$("result").classList.remove("hidden");const n=score/10;$("finalScore").textContent=score;$("correctCount").textContent=n+"/10";$("percent").textContent=(n*10)+"%";$("progressFill").style.width="100%";
+ let title,txt,icon;if(n===10){title="Mükemmel!";txt="COP31 ve iklim politikaları konusunda çok güçlü bir bilgiye sahipsin.";icon="🏆"}else if(n>=7){title="Çok iyi!";txt="İklim konularında sağlam bir temel oluşturmuşsun. Cevap açıklamalarına da göz at.";icon="🌿"}else if(n>=4){title="Güzel başlangıç!";txt="Biraz daha tekrar ile puanını yükseltebilirsin. Cevap anahtarını incelemeyi unutma.";icon="🌎"}else{title="Öğrenmeye devam!";txt="Her cevap yeni bir bilgi. Açıklamaları inceleyip yarışmayı tekrar deneyebilirsin.";icon="🌱"}$("resultTitle").textContent=title;$("resultText").textContent=txt;$("resultIcon").textContent=icon;
+ $("review").innerHTML=questions.map((q,i)=>`<details><summary>${i+1}. ${q.q}</summary><p><b>Doğru cevap: ${String.fromCharCode(65+q.correct)}) ${q.a[q.correct]}</b></p><p>${q.ex}</p></details>`).join("");window.scrollTo({top:0,behavior:"smooth"});
+}
+$("startBtn").addEventListener("click",start);$("nextBtn").addEventListener("click",next);$("restartBtn").addEventListener("click",start);$("reviewBtn").addEventListener("click",()=>{$("review").classList.toggle("hidden");$("reviewBtn").textContent=$("review").classList.contains("hidden")?"Cevap anahtarını incele":"Cevap anahtarını gizle";});
+</script>
+</body>
+</html>
